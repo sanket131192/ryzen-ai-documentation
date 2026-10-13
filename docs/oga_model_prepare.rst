@@ -20,12 +20,12 @@ Linux machine with AMD (e.g., AMD Instinct MI Series) or Nvidia GPUs
 Setup
 =====
 
-1. Create and activate Conda Environment 
+1. Create and activate a Python virtual environment 
 
-.. code-block::
+.. code-block:: bash
 
-    conda create --name <conda_env_name> python=3.11
-    conda activate <conda_env_name>
+    python3.11 -m venv <env_name>
+    source <env_name>/bin/activate
 
 2. If Using AMD GPUs, update PyTorch to use ROCm 
 
@@ -87,13 +87,13 @@ The quantized model is generated in the <quantized safetensor output dir> folder
 Postprocessing
 **************
 
-Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI Conda environment, and execute ``model_generate`` command to generate the final model.
+Copy the quantized model to the Windows PC with Ryzen AI installed, activate the Ryzen AI installer virtual environment, and execute ``model_generate`` command to generate the final model.
 
 Generate the final model for Hybrid execution mode:
 
 .. code-block::
 
-   conda activate ryzen-ai-<version>
+   "C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"
 
    model_generate --hybrid <output_dir> <quantized_model_path>  
 
@@ -102,7 +102,7 @@ Generate the final model for NPU execution mode:
 
 .. code-block::
 
-   conda activate ryzen-ai-<version>
+   "C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"
 
    model_generate --npu <output_dir> <quantized_model_path>  
 
@@ -118,7 +118,7 @@ In Release 1.5.1, a new option has been added to generate a prefill fused versio
 
 .. code-block::
 
-    conda activate ryzen-ai-<version>
+    "C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"
 
     #For Phi-3.5-mini-instruct/Llama-2-7b-chat-hf
     model_generate --hybrid <output_dir> <quantized_model_path> --optimize prefill --mode bfp16

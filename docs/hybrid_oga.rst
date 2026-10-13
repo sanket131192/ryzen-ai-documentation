@@ -94,13 +94,13 @@ To run LLMs in best performance mode, follow these steps:
      cd C:\Windows\System32\AMD
      xrt-smi configure --pmode performance
 
-2. Activate the Ryzen AI 1.5.0 Conda Environment
+2. Activate the Ryzen AI Installer Virtual Environment
 
 Run the following command:
 
 .. code-block:: bash
 
-   conda activate ryzen-ai-1.5.0
+   "C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"
 
 3. Set Up a Working Directory and Copy Required Files
 
@@ -214,12 +214,12 @@ Running LLM via pip install
 
 In addition to the full RyzenAI software stack, we also provide standalone wheel files for the users who prefer using their own environment. To prepare an environment for running the Hybrid and NPU-only LLM independently, perform the following steps:
 
-1. Create a new python environment and activate it.
+1. Create and activate a Python 3.10 virtual environment from Windows Command Prompt. Install Python 3.10 first if it is not already available through the ``py`` launcher.
 
-.. code-block:: bash
+.. code-block:: bat
 
-   conda create -n <env_name> python=3.10 -y
-   conda activate <env_name>
+   py -3.10 -m venv <env_name>
+   call <env_name>\Scripts\activate.bat
 
 2. Install onnxruntime-genai wheel file.
 
@@ -239,13 +239,13 @@ In addition to the full RyzenAI software stack, we also provide standalone wheel
 .. code-block:: bat
 
    :: Copy DLLs for Hybrid models (skip if using an NPU-only model)
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\onnx_custom_ops.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\libutf8_validity.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime_genai\abseil_dll.dll" .
+   xcopy "%VIRTUAL_ENV%\Lib\site-packages\onnxruntime_genai\onnx_custom_ops.dll" .
+   xcopy "%VIRTUAL_ENV%\Lib\site-packages\onnxruntime_genai\libutf8_validity.dll" .
+   xcopy "%VIRTUAL_ENV%\Lib\site-packages\onnxruntime_genai\abseil_dll.dll" .
   
    :: Copy DLLs for NPU-only models (skip if using a Hybrid model)
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\onnxruntime_vitis_ai_custom_ops.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\dyn_dispatch_core.dll" .
-   xcopy "%CONDA_PREFIX%\Lib\site-packages\onnxruntime\capi\xaiengine.dll" .
+   xcopy "%VIRTUAL_ENV%\Lib\site-packages\onnxruntime\capi\onnxruntime_vitis_ai_custom_ops.dll" .
+   xcopy "%VIRTUAL_ENV%\Lib\site-packages\onnxruntime\capi\dyn_dispatch_core.dll" .
+   xcopy "%VIRTUAL_ENV%\Lib\site-packages\onnxruntime\capi\xaiengine.dll" .
 
 5. Run the Hybrid or NPU model.

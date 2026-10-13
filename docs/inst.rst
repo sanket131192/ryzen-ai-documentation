@@ -25,7 +25,7 @@ The following dependencies must be installed on the system before installing the
      - 2022
    * - cmake
      - version >= 3.26
-   * - Python distribution (Miniforge preferred)
+   * - Python (for creating standalone virtual environments)
      - Latest version
 
 |
@@ -34,7 +34,7 @@ The following dependencies must be installed on the system before installing the
 
 - Visual Studio 2022 Community: ensure that `Desktop Development with C++` is installed
 
-- Miniforge: ensure that the following path is set in the System PATH variable: ``path\to\miniforge3\condabin`` or ``path\to\miniforge3\Scripts\`` or ``path\to\miniforge3\`` (The System PATH variable should be set in the *System Variables* section of the *Environment Variables* window).
+- Python: ensure the required Python version is installed and available through the Windows ``py`` launcher when creating standalone virtual environments. The Ryzen AI MSI also provides its own virtual environment.
 
 |
 
@@ -44,14 +44,14 @@ The following dependencies must be installed on the system before installing the
 Install NPU Drivers
 *******************
 
-- Download the NPU driver installation package :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
+- Download the NPU driver installation package (update with latest link) :download:`NPU Driver <https://account.amd.com/en/forms/downloads/ryzenai-eula-public-xef.html?filename=NPU_RAI1.5_280_WHQL.zip>`
 
 - Install the NPU drivers by following these steps:
 
   - Extract the downloaded ZIP file.
   - Open a terminal in administrator mode and execute the ``.\npu_sw_installer.exe`` file.
 
-- Ensure that NPU MCDM driver (Version:32.0.203.280, Date:5/16/2025) is correctly installed by opening Task Manager -> Performance -> NPU0.
+- Ensure that NPU MCDM driver (Version:specif the version, Date:updated date) is correctly installed by opening Task Manager -> Performance -> NPU0.
 
 
 .. _install-bundled:
@@ -60,16 +60,23 @@ Install NPU Drivers
 Install Ryzen AI Software
 *************************
 
-- Download the RyzenAI Software installer :download:`ryzen-ai-1.5.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.0.msi>`.
+- Download the RyzenAI Software installer (insert RAI-1.9 MSI installer link) :download:`ryzen-ai-1.9.0.msi <https://account.amd.com/en/forms/downloads/ryzen-ai-software-platform-xef.html?filename=ryzen-ai-1.5.0.msi>`.
 
 - Launch the MSI installer and follow the instructions on the installation wizard:
 
   - Accept the terms of the Licence agreement
-  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\1.5.0``)
-  - Specify the name for the conda environment (default: ``ryzen-ai-1.5.0``)
+  - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\``)
+  - Specify the name for the virtual environment (default: ``C\Program Files\RyzenAI\2.0.0\venv``)
+
+  .. image:: images/venv-pic-1.png
+   :align: center
 
 
-The Ryzen AI Software packages are now installed in the conda environment created by the installer.
+The Ryzen AI Software packages are now installed in the virtual environment created by the installer.
+
+.. image:: images/env-create-after-installation-2.png
+   :align: center
+
 
 .. note::
 
@@ -85,13 +92,13 @@ Test the Installation
 
 The Ryzen AI Software installation folder contains test to verify that the software is correctly installed. This installation test can be found in the ``quicktest`` subfolder.
 
-- Open a Conda command prompt (search for "Miniforge Prompt" in the Windows start menu)
+- Open a Command Prompt or (search for "Miniforge Prompt" in the Windows start menu)
 
-- Activate the Conda environment created by the Ryzen AI installer:
+- Activate the virtual environment created by the Ryzen AI installer:
 
 .. code-block::
 
-   conda activate <env_name>
+   "C:\Program Files\RyzenAI\2.0.0\venv\Scripts\activate.bat"
 
 - Run the test:
 

@@ -62,7 +62,7 @@ Step 1: Install Packages
 
 * Ensure that the Ryzen AI Software  is correctly installed. For more details, see the :doc:`installation instructions <inst>`.
 
-* Use the conda environment created during the installation for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
+* Activate the Python virtual environment created during installation (for example, ``"C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"``) for the rest of the steps. This example requires a couple of additional packages. Run the following command to install them:
 
 
 .. code-block::

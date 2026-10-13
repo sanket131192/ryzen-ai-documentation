@@ -22,12 +22,14 @@ Installation Steps
   xcopy /I /E "C:\Program Files\RyzenAI\1.5.0\GenAI-SD" C:\Temp\GenAI-SD
   cd C:\Temp\GenAI-SD
 
-3. Create a Conda environment for the Stable Diffusion demo packages:
+3. Create a Python virtual environment for the Stable Diffusion demo packages:
 
-.. code-block:: 
+.. code-block:: bat
 
-  conda update -n base -c defaults conda
-  conda env create --file=env.yaml
+  py -3.10 -m venv ryzenai-stable-diffusion
+  call ryzenai-stable-diffusion\Scripts\activate.bat
+
+The demo's ``env.yaml`` specifies dependencies for the original environment. Convert its pip-installable dependencies into a ``requirements.txt`` file and install them in the active virtual environment using ``python -m pip install -r requirements.txt``. Any non-pip dependencies must be installed separately. The contents of ``env.yaml`` are not included here, so an equivalent pip requirements file cannot be specified in this documentation alone.
 
 4. Download the Stable Diffusion models: 
 
@@ -47,9 +49,9 @@ Installation Steps
 Running the Demos
 ******************
 
-Activate the conda environment::
+Activate the Python virtual environment::
 
-  conda activate ryzenai-stable-diffusion
+  call ryzenai-stable-diffusion\Scripts\activate.bat
 
 Optionally, set the NPU to high performance mode to maximize performance::
 
@@ -111,11 +113,11 @@ Custom prompts can be provided with the ``--prompt`` option. For instance::
 
 .. 1. Ensure the latest version of Ryzen AI and NPU drivers are installed. See :doc:`inst`.
 
-.. 2. Activate the installed Ryzen AI conda environment:
+.. 2. Activate the installed Ryzen AI virtual environment:
 
 .. .. code-block:: 
 
-..   conda activate ryzen-ai-1.5.0
+..   "C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"
 
 .. 3. Copy the GenAI-SD folder from the RyzenAI installation tree to your working area, and then go to the copied folder. For instance:
 
@@ -124,11 +126,11 @@ Custom prompts can be provided with the ``--prompt`` option. For instance::
 ..   xcopy /I /E "%RYZEN_AI_INSTALLATION_PATH%\GenAI-SD" C:\Temp\GenAI-SD
 ..   cd C:\Temp\GenAI-SD
 
-.. 4. Update the Ryzen AI conda environment and install additional dependencies:
+.. 4. Install additional dependencies into the active Ryzen AI virtual environment:
 
 .. .. code-block:: 
 
-..   conda env update -f rai_env_update.yaml
+..   python -m pip install -r requirements.txt  # After converting rai_env_update.yaml dependencies to pip requirements
 ..   pip install "%RYZEN_AI_INSTALLATION_PATH%\atom-1.0-cp310-cp310-win_amd64.whl"
 ..   pip install opencv-python==4.11.0.86
 ..   pip install accelerate==0.32.0
