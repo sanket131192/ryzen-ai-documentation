@@ -66,7 +66,7 @@ Install Ryzen AI Software
 
   - Accept the terms of the Licence agreement
   - Provide the destination folder for Ryzen AI installation (default: ``C:\Program Files\RyzenAI\``)
-  - Specify the name for the virtual environment (default: ``C\Program Files\RyzenAI\2.0.0\venv``)
+  - Specify the name for the virtual environment (default: ``C\Program Files\RyzenAI\1.9.0\venv``)
 
   .. image:: images/venv-pic-1.png
    :align: center
@@ -98,7 +98,7 @@ The Ryzen AI Software installation folder contains test to verify that the softw
 
 .. code-block::
 
-   "C:\Program Files\RyzenAI\2.0.0\venv\Scripts\activate.bat"
+   "C:\Program Files\RyzenAI\1.9.0\venv\Scripts\activate.bat"
 
 - Run the test:
 
